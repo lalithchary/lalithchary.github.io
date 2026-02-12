@@ -1,7 +1,7 @@
 export const resumeData = {
   personalInfo: {
     name: "LAKSHMI NARAYANACHARY MODEPALLI",
-    role: "Manufacturing Systems Analyst",
+    role: "Manufacturing Systems Analyst | PPC Engineer ",
     phone: "+91 818689 1961",
     email: "lalithtinku@gmail.com",
     linkedin: "linkedin.com/in/lalithchary",
