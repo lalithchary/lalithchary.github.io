@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box, Container, Typography, Grid, Chip, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resume';

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Container, Typography, TextField, Button, Grid, Paper, Snackbar, Alert } from '@mui/material';
-import { useForm, ValidationError } from '@formspree/react';
+import { useForm } from '@formspree/react';
 import SendIcon from '@mui/icons-material/Send';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -10,7 +10,7 @@ import { resumeData } from '../data/resume';
 const Contact = () => {
     // Replace with your Formspree ID or use a generic one for testing
     // For now, we simulate submission or use a placeholder form
-    const [state, handleSubmit] = useForm("PLACEHOLDER_FORMSPREE_ID");
+    const [] = useForm("PLACEHOLDER_FORMSPREE_ID");
     const [openSnackbar, setOpenSnackbar] = useState(false);
 
     // Since we don't have a real ID, we'll manually handle submission for the demo
