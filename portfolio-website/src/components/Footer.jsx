@@ -11,7 +11,7 @@ const Footer = () => {
                     {' Lakshmi Narayanachary Modepalli. All rights reserved.'}
                 </Typography>
                 <Typography variant="caption" display="block" color="text.secondary" align="center" sx={{ mt: 1 }}>
-                    Designed with Materialistic Movement Theme
+                    Designed with efforts
                 </Typography>
             </Container>
         </Box>
