@@ -38,7 +38,7 @@ const Navbar = () => {
                     >
                         <EngineeringIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
                         <Typography variant="h6" component="div" sx={{ fontWeight: 700, letterSpacing: 1 }}>
-                            LNM
+                            M L N Chary
                         </Typography>
                     </motion.div>
 
