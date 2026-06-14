@@ -1,6 +1,6 @@
 export const resumeData = {
   "personalInfo": {
-    "name": "Lakshmi Narayanachary M",
+    "name": "Lakshmi Narayanachary",
     "fullName": "Modepalli Lakshmi Narayanachary",
     "roles": [
       "Manufacturing Systems Engineer",
