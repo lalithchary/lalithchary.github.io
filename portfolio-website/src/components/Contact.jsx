@@ -30,12 +30,23 @@ const Contact = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-    const onSubmit = (e) => {
+    const [submitting, setSubmitting] = useState(false);
+
+    const onSubmit = async (e) => {
         e.preventDefault();
-        const mailtoLink = `mailto:${resumeData.personalInfo.email}?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.name} (${formData.email})`;
-        window.open(mailtoLink);
-        setOpenSnackbar(true);
-        setFormData({ name: '', email: '', message: '' });
+        setSubmitting(true);
+        try {
+            const res = await fetch('https://formspree.io/f/mlgkaovl', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            if (res.ok) {
+                setOpenSnackbar(true);
+                setFormData({ name: '', email: '', message: '' });
+            }
+        } catch (err) { /* silent */ }
+        setSubmitting(false);
     };
 
     return (
@@ -76,8 +87,8 @@ const Contact = () => {
                                         <TextField fullWidth label="Message" multiline rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2, '& fieldset': { borderColor: 'rgba(108,99,255,0.2)' }, '&:hover fieldset': { borderColor: 'primary.main' } } }} />
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <Button type="submit" variant="contained" size="large" fullWidth endIcon={<SendIcon />} sx={{ py: 1.5, mt: 1 }}>
-                                            Send Message
+                                        <Button type="submit" variant="contained" size="large" fullWidth endIcon={<SendIcon />} disabled={submitting} sx={{ py: 1.5, mt: 1 }}>
+                                            {submitting ? 'Sending...' : 'Send Message'}
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -88,7 +99,7 @@ const Contact = () => {
             </Container>
 
             <Snackbar open={openSnackbar} autoHideDuration={4000} onClose={() => setOpenSnackbar(false)}>
-                <Alert severity="success" onClose={() => setOpenSnackbar(false)}>Opening your email client...</Alert>
+                <Alert severity="success" onClose={() => setOpenSnackbar(false)}>Message sent successfully!</Alert>
             </Snackbar>
         </Box>
     );
