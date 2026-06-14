@@ -111,11 +111,15 @@ export const resumeData = {
         },
         {
           "name": "Docker",
-          "level": 70
+          "level": 75
         },
         {
-          "name": "",
-          "level": 0
+          "name": "Asset Management",
+          "level": 71
+        },
+        {
+          "name": "Training",
+          "level": 83
         }
       ]
     },
@@ -146,6 +150,10 @@ export const resumeData = {
         {
           "name": "Data Analytics",
           "level": 75
+        },
+        {
+          "name": "Shareholder meetings",
+          "level": 72
         }
       ]
     },
