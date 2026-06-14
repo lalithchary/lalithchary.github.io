@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AdminEditor from './components/AdminEditor';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Projects />
                 <Contact />
                 <Footer />
+                <AdminEditor />
             </Box>
         </ThemeProvider>
     );
