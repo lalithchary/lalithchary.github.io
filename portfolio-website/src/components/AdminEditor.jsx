@@ -89,9 +89,10 @@ const AdminEditor = () => {
                                 <Paper key={ci} sx={{ p: 2 }}>
                                     <TextField size="small" fullWidth label="Category" value={cat.category} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.skills[ci].category = e.target.value; setData(d); }} sx={{ mb: 1 }} />
                                     {cat.items.map((skill, si) => (
-                                        <Box key={si} sx={{ display: 'flex', gap: 1, mb: 1 }}>
+                                        <Box key={si} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center' }}>
                                             <TextField size="small" label="Skill" value={skill.name} sx={{ flex: 1 }} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.skills[ci].items[si].name = e.target.value; setData(d); }} />
                                             <TextField size="small" label="%" type="number" value={skill.level} sx={{ width: 70 }} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.skills[ci].items[si].level = Number(e.target.value); setData(d); }} />
+                                            <IconButton size="small" onClick={() => { const d = JSON.parse(JSON.stringify(data)); d.skills[ci].items.splice(si, 1); setData(d); }} sx={{ color: 'error.main' }}>✕</IconButton>
                                         </Box>
                                     ))}
                                     <Button size="small" onClick={() => { const d = JSON.parse(JSON.stringify(data)); d.skills[ci].items.push({ name: 'New Skill', level: 70 }); setData(d); }}>+ Add Skill</Button>
