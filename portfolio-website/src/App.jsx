@@ -1,4 +1,3 @@
-
 import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import theme from './theme/theme';
 import Navbar from './components/Navbar';
@@ -19,8 +18,8 @@ function App() {
                 <Hero />
                 <About />
                 <Experience />
-                <Projects />
                 <Skills />
+                <Projects />
                 <Contact />
                 <Footer />
             </Box>

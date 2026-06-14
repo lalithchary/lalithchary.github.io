@@ -1,51 +1,50 @@
-
-import { Box, Container, Typography, Grid, Card, CardContent, CardActions, Button } from '@mui/material';
+import { Box, Container, Typography, Grid, Paper, Chip } from '@mui/material';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resume';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const Projects = () => {
-    return (
-        <Box id="projects" sx={{ py: 10, bgcolor: '#0a1929' }}>
-            <Container maxWidth="lg">
-                <Typography variant="h3" gutterBottom align="center" sx={{ mb: 6 }}>
-                    Key Projects
-                    <Box component="span" sx={{ display: 'block', height: 4, width: 60, bgcolor: 'secondary.main', mx: 'auto', mt: 1 }} />
+const ProjectCard = ({ project, index }) => (
+    <Grid item xs={12} md={6} lg={4}>
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            style={{ height: '100%' }}
+        >
+            <Paper sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', transition: 'all 0.3s', cursor: 'default', '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 20px 60px rgba(108,99,255,0.15)', border: '1px solid rgba(108,99,255,0.4)' } }}>
+                <Typography variant="h4" sx={{ mb: 2 }}>{project.icon}</Typography>
+                <Typography variant="h6" sx={{ mb: 1.5, fontWeight: 700 }}>{project.title}</Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 3, flexGrow: 1, lineHeight: 1.7 }}>
+                    {project.description}
                 </Typography>
-
-                <Grid container spacing={3}>
-                    {resumeData.projects.map((project, index) => (
-                        <Grid item xs={12} md={6} lg={4} key={index}>
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                whileHover={{ y: -10 }}
-                                transition={{ duration: 0.3 }}
-                                style={{ height: '100%' }}
-                            >
-                                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                                    <CardContent sx={{ flexGrow: 1 }}>
-                                        <Typography variant="h6" gutterBottom color="primary">
-                                            {project.title}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {project.description}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Button size="small" endIcon={<ArrowForwardIcon />} color="secondary">
-                                            Details
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </motion.div>
-                        </Grid>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8 }}>
+                    {project.tags.map((tag, i) => (
+                        <Chip key={i} label={tag} size="small" sx={{ background: 'rgba(108,99,255,0.1)', color: '#A0A8C0', fontSize: '0.7rem', fontWeight: 600 }} />
                     ))}
-                </Grid>
-            </Container>
-        </Box>
-    );
-};
+                </Box>
+            </Paper>
+        </motion.div>
+    </Grid>
+);
+
+const Projects = () => (
+    <Box id="projects" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
+        <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 30% 70%, rgba(108,99,255,0.05) 0%, transparent 50%)' }} />
+        <Container maxWidth="lg" sx={{ position: 'relative' }}>
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                <Typography variant="h2" align="center" sx={{ mb: 2 }}>
+                    Key <Box component="span" sx={{ background: 'linear-gradient(135deg, #6C63FF, #00D9FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Projects</Box>
+                </Typography>
+                <Box sx={{ width: 60, height: 4, background: 'linear-gradient(90deg, #6C63FF, #00D9FF)', mx: 'auto', borderRadius: 2, mb: 8 }} />
+            </motion.div>
+
+            <Grid container spacing={3}>
+                {resumeData.projects.map((project, i) => (
+                    <ProjectCard key={i} project={project} index={i} />
+                ))}
+            </Grid>
+        </Container>
+    </Box>
+);
 
 export default Projects;

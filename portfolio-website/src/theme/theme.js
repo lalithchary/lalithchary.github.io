@@ -4,92 +4,113 @@ const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: '#00e5ff', // Cyan - representing innovation/technology
-            contrastText: '#000000',
+            main: '#6C63FF',
+            light: '#8B83FF',
+            dark: '#4A42CC',
         },
         secondary: {
-            main: '#ff3d00', // Deep Orange - mechanical accent
-            contrastText: '#ffffff',
+            main: '#00D9FF',
+            light: '#33E1FF',
+            dark: '#00A3BF',
         },
         background: {
-            default: '#0a1929', // Dark Blue-Grey - deep industrial background
-            paper: '#132f4c',   // Slightly lighter for cards
+            default: '#0B0F1A',
+            paper: 'rgba(20, 27, 45, 0.7)',
         },
         text: {
-            primary: '#ffffff',
-            secondary: '#b2bac2',
-        },
-        action: {
-            active: '#00e5ff',
-            hover: 'rgba(0, 229, 255, 0.08)',
+            primary: '#F0F0F5',
+            secondary: '#A0A8C0',
         },
     },
     typography: {
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Inter", "Poppins", sans-serif',
         h1: {
-            fontWeight: 700,
-            letterSpacing: '0.02em',
-            fontSize: '3.5rem',
-            '@media (max-width:600px)': {
-                fontSize: '2.5rem',
-            },
+            fontFamily: '"Poppins", sans-serif',
+            fontWeight: 800,
+            fontSize: '4rem',
+            lineHeight: 1.1,
+            '@media (max-width:600px)': { fontSize: '2.5rem' },
         },
         h2: {
-            fontWeight: 600,
-            letterSpacing: '0.01em',
+            fontFamily: '"Poppins", sans-serif',
+            fontWeight: 700,
+            fontSize: '2.8rem',
+            '@media (max-width:600px)': { fontSize: '2rem' },
         },
         h3: {
+            fontFamily: '"Poppins", sans-serif',
+            fontWeight: 600,
+            fontSize: '2rem',
+        },
+        h5: {
+            fontFamily: '"Inter", sans-serif',
             fontWeight: 600,
         },
-        h4: {
-            fontWeight: 500,
+        h6: {
+            fontFamily: '"Inter", sans-serif',
+            fontWeight: 600,
+        },
+        body1: {
+            fontFamily: '"Inter", sans-serif',
+            lineHeight: 1.8,
         },
         button: {
+            fontFamily: '"Inter", sans-serif',
             fontWeight: 600,
-            letterSpacing: '0.05em',
+            letterSpacing: '0.02em',
         },
     },
+    shape: { borderRadius: 16 },
     components: {
         MuiButton: {
             styleOverrides: {
                 root: {
-                    borderRadius: 0, // Sharp edges for mechanical feel
+                    borderRadius: 12,
                     textTransform: 'none',
-                    borderWidth: '2px',
-                    '&:hover': {
-                        borderWidth: '2px',
-                    },
+                    padding: '10px 24px',
                 },
                 contained: {
-                    boxShadow: '0 4px 6px rgba(0, 229, 255, 0.25)',
+                    background: 'linear-gradient(135deg, #6C63FF 0%, #00D9FF 100%)',
+                    boxShadow: '0 4px 20px rgba(108, 99, 255, 0.3)',
+                    '&:hover': {
+                        background: 'linear-gradient(135deg, #5A52E0 0%, #00B8D9 100%)',
+                        boxShadow: '0 6px 30px rgba(108, 99, 255, 0.5)',
+                    },
                 },
                 outlined: {
-                    borderColor: '#00e5ff',
+                    borderColor: '#6C63FF',
+                    '&:hover': {
+                        borderColor: '#00D9FF',
+                        background: 'rgba(108, 99, 255, 0.08)',
+                    },
                 },
             },
         },
         MuiCard: {
             styleOverrides: {
                 root: {
-                    borderRadius: 0,
-                    border: '1px solid rgba(0, 229, 255, 0.1)',
-                    background: 'linear-gradient(145deg, #132f4c 0%, #0a1929 100%)',
+                    borderRadius: 20,
+                    background: 'rgba(20, 27, 45, 0.6)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(108, 99, 255, 0.15)',
                 },
             },
         },
-        MuiAppBar: {
+        MuiPaper: {
             styleOverrides: {
                 root: {
-                    background: 'rgba(10, 25, 41, 0.7)',
-                    backdropFilter: 'blur(10px)',
-                    borderBottom: '1px solid rgba(0, 229, 255, 0.1)',
+                    borderRadius: 20,
+                    background: 'rgba(20, 27, 45, 0.6)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(108, 99, 255, 0.1)',
                 },
             },
         },
         MuiChip: {
             styleOverrides: {
                 root: {
-                    borderRadius: 4, // Slightly rounded but still structural
+                    borderRadius: 8,
+                    fontWeight: 500,
                 },
             },
         },

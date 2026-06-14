@@ -1,123 +1,94 @@
 import { useState } from 'react';
 import { Box, Container, Typography, TextField, Button, Grid, Paper, Snackbar, Alert } from '@mui/material';
-import { useForm } from '@formspree/react';
+import { motion } from 'framer-motion';
 import SendIcon from '@mui/icons-material/Send';
 import EmailIcon from '@mui/icons-material/Email';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { resumeData } from '../data/resume';
 
-const Contact = () => {
-    // Replace with your Formspree ID or use a generic one for testing
-    // For now, we simulate submission or use a placeholder form
-    const [] = useForm("PLACEHOLDER_FORMSPREE_ID");
-    const [openSnackbar, setOpenSnackbar] = useState(false);
+const ContactInfo = ({ icon: Icon, label, value, href }) => (
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 2 }}>
+        <Box sx={{ width: 44, height: 44, borderRadius: '12px', background: 'rgba(108,99,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Icon sx={{ color: 'primary.main', fontSize: 20 }} />
+        </Box>
+        <Box>
+            <Typography variant="caption" color="text.secondary">{label}</Typography>
+            {href ? (
+                <Typography variant="body2" component="a" href={href} target="_blank" rel="noopener" sx={{ display: 'block', color: 'text.primary', textDecoration: 'none', fontWeight: 500, '&:hover': { color: 'primary.main' } }}>
+                    {value}
+                </Typography>
+            ) : (
+                <Typography variant="body2" fontWeight={500}>{value}</Typography>
+            )}
+        </Box>
+    </Box>
+);
 
-    // Since we don't have a real ID, we'll manually handle submission for the demo
+const Contact = () => {
+    const [openSnackbar, setOpenSnackbar] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
     const onSubmit = (e) => {
         e.preventDefault();
-        // Simulate sending
-        console.log("Form Data:", formData);
+        const mailtoLink = `mailto:${resumeData.personalInfo.email}?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.name} (${formData.email})`;
+        window.open(mailtoLink);
         setOpenSnackbar(true);
         setFormData({ name: '', email: '', message: '' });
     };
 
     return (
-        <Box id="contact" sx={{ py: 10, bgcolor: '#0a1929' }}>
-            <Container maxWidth="md">
-                <Typography variant="h3" gutterBottom align="center" sx={{ mb: 6 }}>
-                    Get In Touch
-                    <Box component="span" sx={{ display: 'block', height: 4, width: 60, bgcolor: 'secondary.main', mx: 'auto', mt: 1 }} />
-                </Typography>
+        <Box id="contact" sx={{ py: { xs: 8, md: 12 }, position: 'relative' }}>
+            <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 80%, rgba(108,99,255,0.06) 0%, transparent 50%)' }} />
+            <Container maxWidth="lg" sx={{ position: 'relative' }}>
+                <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                    <Typography variant="h2" align="center" sx={{ mb: 2 }}>
+                        Get In <Box component="span" sx={{ background: 'linear-gradient(135deg, #6C63FF, #00D9FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Touch</Box>
+                    </Typography>
+                    <Box sx={{ width: 60, height: 4, background: 'linear-gradient(90deg, #6C63FF, #00D9FF)', mx: 'auto', borderRadius: 2, mb: 2 }} />
+                    <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 500, mx: 'auto' }}>
+                        Open to opportunities in IT Infrastructure, Manufacturing Systems, and Process Automation roles.
+                    </Typography>
+                </motion.div>
 
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={5}>
-                        <Box sx={{ p: 2 }}>
-                            <Typography variant="h5" color="primary" gutterBottom>
-                                Contact Information
-                            </Typography>
-                            <Typography variant="body1" paragraph>
-                                Feel free to reach out for collaborations or just to say hi!
-                            </Typography>
-
-                            <Box sx={{ mt: 4, display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <EmailIcon sx={{ mr: 2, color: 'secondary.main' }} />
-                                <Typography variant="body1">{resumeData.personalInfo.email}</Typography>
-                            </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <PhoneIcon sx={{ mr: 2, color: 'secondary.main' }} />
-                                <Typography variant="body1">{resumeData.personalInfo.phone}</Typography>
-                            </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <LinkedInIcon sx={{ mr: 2, color: 'secondary.main' }} />
-                                <Typography variant="body1" component="a" href={`https://${resumeData.personalInfo.linkedin}`} target="_blank" sx={{ color: 'white', textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
-                                    LinkedIn Profile
-                                </Typography>
-                            </Box>
-                        </Box>
+                        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                            <ContactInfo icon={EmailIcon} label="Email" value={resumeData.personalInfo.email} href={`mailto:${resumeData.personalInfo.email}`} />
+                            <ContactInfo icon={PhoneIcon} label="Phone" value={resumeData.personalInfo.phone} href={`tel:${resumeData.personalInfo.phone}`} />
+                            <ContactInfo icon={LinkedInIcon} label="LinkedIn" value="linkedin.com/in/lalithchary" href={`https://${resumeData.personalInfo.linkedin}`} />
+                            <ContactInfo icon={LocationOnIcon} label="Location" value={resumeData.personalInfo.location} />
+                        </motion.div>
                     </Grid>
 
                     <Grid item xs={12} md={7}>
-                        <Paper component="form" onSubmit={onSubmit} sx={{ p: 4, bgcolor: '#132f4c' }}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Name"
-                                        variant="outlined"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        required
-                                    />
+                        <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+                            <Paper component="form" onSubmit={onSubmit} sx={{ p: 4 }}>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField fullWidth label="Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2, '& fieldset': { borderColor: 'rgba(108,99,255,0.2)' }, '&:hover fieldset': { borderColor: 'primary.main' } } }} />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField fullWidth label="Email" type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2, '& fieldset': { borderColor: 'rgba(108,99,255,0.2)' }, '&:hover fieldset': { borderColor: 'primary.main' } } }} />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField fullWidth label="Message" multiline rows={4} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2, '& fieldset': { borderColor: 'rgba(108,99,255,0.2)' }, '&:hover fieldset': { borderColor: 'primary.main' } } }} />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Button type="submit" variant="contained" size="large" fullWidth endIcon={<SendIcon />} sx={{ py: 1.5, mt: 1 }}>
+                                            Send Message
+                                        </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Email"
-                                        type="email"
-                                        variant="outlined"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        required
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Message"
-                                        multiline
-                                        rows={4}
-                                        variant="outlined"
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                        required
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <Button
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                        fullWidth
-                                        size="large"
-                                        endIcon={<SendIcon />}
-                                        sx={{ mt: 2 }}
-                                    >
-                                        Send Message
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </Paper>
+                            </Paper>
+                        </motion.div>
                     </Grid>
                 </Grid>
             </Container>
 
-            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)}>
-                <Alert onClose={() => setOpenSnackbar(false)} severity="success" sx={{ width: '100%' }}>
-                    Message sent successfully! (Demo Mode)
-                </Alert>
+            <Snackbar open={openSnackbar} autoHideDuration={4000} onClose={() => setOpenSnackbar(false)}>
+                <Alert severity="success" onClose={() => setOpenSnackbar(false)}>Opening your email client...</Alert>
             </Snackbar>
         </Box>
     );
