@@ -105,12 +105,18 @@ const AdminEditor = () => {
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                             {data.experience.map((exp, ei) => (
                                 <Paper key={ei} sx={{ p: 2 }}>
+                                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                        <IconButton size="small" onClick={() => { const d = JSON.parse(JSON.stringify(data)); d.experience.splice(ei, 1); setData(d); }} sx={{ color: 'error.main' }}>✕</IconButton>
+                                    </Box>
                                     <TextField size="small" fullWidth label="Role" value={exp.role} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.experience[ei].role = e.target.value; setData(d); }} sx={{ mb: 1 }} />
+                                    <TextField size="small" fullWidth label="Company" value={exp.company} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.experience[ei].company = e.target.value; setData(d); }} sx={{ mb: 1 }} />
                                     <TextField size="small" fullWidth label="Period" value={exp.period} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.experience[ei].period = e.target.value; setData(d); }} sx={{ mb: 1 }} />
+                                    <TextField size="small" fullWidth label="Type (IT/Manufacturing)" value={exp.type} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.experience[ei].type = e.target.value; setData(d); }} sx={{ mb: 1 }} />
                                     <Typography variant="caption" color="text.secondary">Highlights (one per line)</Typography>
                                     <TextField size="small" fullWidth multiline rows={4} value={exp.highlights.join('\n')} onChange={(e) => { const d = JSON.parse(JSON.stringify(data)); d.experience[ei].highlights = e.target.value.split('\n').filter(Boolean); setData(d); }} />
                                 </Paper>
                             ))}
+                            <Button size="small" onClick={() => { const d = JSON.parse(JSON.stringify(data)); d.experience.push({ company: 'Company', role: 'New Role', period: '2025 – Present', type: 'IT', highlights: [''] }); setData(d); }}>+ Add Experience</Button>
                         </Box>
                     )}
 
