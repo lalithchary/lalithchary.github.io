@@ -1,0 +1,71 @@
+﻿import { Canvas,useFrame } from '@react-three/fiber'
+import { Float,Sphere,Stars } from '@react-three/drei'
+import { Download,Mail,Phone,Linkedin,MapPin,Briefcase,Zap,Award } from 'lucide-react'
+import { useRef } from 'react'
+
+function ElementalOrbs(){
+  const g=useRef()
+  useFrame(s=>{if(g.current)g.current.rotation.y=s.clock.elapsedTime*0.1})
+  const e=[{c:'#f97316',p:[2,1,0]},{c:'#0ea5e9',p:[-2,-1,1]},{c:'#22c55e',p:[1,-2,-1]},{c:'#a78bfa',p:[-1,2,-1]}]
+  return <group ref={g}>{e.map((v,i)=>(<Float key={i} speed={2} floatIntensity={1.5} rotationIntensity={0.5}><Sphere args={[0.4,32,32]} position={v.p}><meshStandardMaterial color={v.c} emissive={v.c} emissiveIntensity={0.6} transparent opacity={0.8}/></Sphere></Float>))}</group>
+}
+
+const data={
+  n:"Lakshmi Narayanachary Modepalli",
+  t:"Manufacturing Systems Engineer | PPC Engineer | Material Planning & Product Costing",
+  l:"Pragathi Nagar, Hyderabad - 500090, India",
+  p:"+91 81868 91961",
+  e:"lalithtinku@gmail.com",
+  li:"linkedin.com/in/lalithchary",
+  s:"Results-driven Manufacturing Systems Engineer with 8+ years experience in production planning, lean manufacturing, and process optimization. Expertise in Toyota Production System, Six Sigma, Kaizen, ERP systems, and Power BI.",
+  sk:["Production Planning & Control","Lean Manufacturing","Six Sigma","MRP","ERP Systems","Power BI","BOM Management","Inventory Control","Process Optimization"],
+  exp:[
+    {r:"Manufacturing Systems Engineer",c:"Diligent SCM Solutions Pvt Ltd | Jan 2020 - May 2025",ps:["Led TPS implementation with 5S, Kaizen, Poka-Yoke","Reduced scrap by 6% saving INR 43L annually","Developed Power BI and Power Apps tools for visibility"]},
+    {r:"Material Planning & Product Costing Engineer",c:"Diligent SCM Solutions Pvt Ltd | Jan 2019 - Jan 2020",ps:["Managed 10,000+ products across 8 families","Improved material availability to 95%+","Conducted cost estimation for RFQs"]},
+    {r:"Production Planning & Control Engineer",c:"Diligent SCM Solutions Pvt Ltd | Jan 2017 - Jan 2019",ps:["Reduced scrap by 6% via nesting optimization","Improved data entry efficiency by 25%","Implemented FIFO and Kanban systems"]}
+  ],
+  ach:["Reduced sheet metal scrap by 6%, saving INR 43L annually","Improved on-time delivery from 90% to 96%","Managed material planning for 10,000+ products with 95%+ availability","Built and trained ~15 members in PPC"]
+}
+
+export default function App(){
+  return(
+    <>
+      <div className="fixed inset-0 z-0"><Canvas camera={{position:[0,0,6],fov:60}}><ambientLight intensity={0.5}/><pointLight position={[10,10,10]}/><Stars radius={100} depth={50} count={4000} factor={3} fade/><ElementalOrbs/></Canvas></div>
+      <div className="relative z-10 min-h-screen bg-black text-white p-4">
+        <header className="flex items-center justify-center min-h-[calc(100vh-200px)]">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-6xl font-black mb-4 bg-gradient-to-r from-orange-400 via-blue-400 via-green-400 to-purple-400 bg-clip-text text-transparent">{data.n}</h1>
+            <p className="text-xl text-white/80 mb-6">{data.t}</p>
+            <div className="flex flex-wrap justify-center gap-3 mb-6 text-sm">
+              <span className="glass rounded-full px-3 py-1.5 flex items-center gap-1"><MapPin className="w-3 h-3"/> {data.l}</span>
+              <span className="glass rounded-full px-3 py-1.5 flex items-center gap-1"><Phone className="w-3 h-3"/> {data.p}</span>
+              <span className="glass rounded-full px-3 py-1.5 flex items-center gap-1"><Mail className="w-3 h-3"/> {data.e}</span>
+              <span className="glass rounded-full px-3 py-1.5 flex items-center gap-1"><Linkedin className="w-3 h-3"/> {data.li}</span>
+            </div>
+            <div className="glass rounded-xl p-6 mb-6 max-w-2xl mx-auto">{data.s}</div>
+            <a href="mlnc_manufacturing_Resume.pdf" download className="inline-flex items-center gap-2 glass rounded-full px-5 py-3 text-lg font-bold bg-gradient-to-r from-orange-500 to-purple-500"><Download className="w-5 h-5"/> Download Resume</a>
+          </div>
+        </header>
+        <section className="py-8 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text text-transparent">Skills</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">{data.sk.map((s,i)=>(<div key={i} className="glass glass-hover rounded-lg p-3 text-center">{s}</div>))}</div>
+          </div>
+        </section>
+        <section className="py-8 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Experience</h2>
+            <div className="space-y-4">{data.exp.map((j,i)=>(<div key={i} className="glass rounded-xl p-4"><h3 className="text-xl font-bold text-orange-400 flex items-center gap-2"><Briefcase className="w-4 h-4"/> {j.r}</h3><p className="text-white/70 mb-2">{j.c}</p><ul className="space-y-1">{j.ps.map((p,k)=>(<li key={k} className="flex items-start gap-2 text-white/80"><Zap className="w-3 h-3 text-yellow-400 mt-0.5"/> {p}</li>))}</ul></div>))}</div>
+          </div>
+        </section>
+        <section className="py-8 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-green-400 to-purple-400 bg-clip-text text-transparent">Achievements</h2>
+            <div className="grid md:grid-cols-2 gap-4">{data.ach.map((a,i)=>(<div key={i} className="glass glass-hover rounded-lg p-4 flex items-start gap-3"><Award className="w-4 h-4 text-yellow-400 flex-shrink-0"/>{a}</div>))}</div>
+          </div>
+        </section>
+        <footer className="py-6 border-t border-white/10 text-center text-white/60">Â© 2025 Lakshmi Narayanachary Modepalli</footer>
+      </div>
+    </>
+  )
+}
