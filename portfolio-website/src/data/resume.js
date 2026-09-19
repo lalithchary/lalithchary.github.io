@@ -4,59 +4,49 @@ export const resumeData = {
     "fullName": "Modepalli Lakshmi Narayanachary",
     "roles": [
       "Manufacturing Systems Engineer",
-      "IT Infrastructure Specialist",
-      "Business Process Automation Expert",
+      "PPC Engineer",
+      "Material Planning & Product Costing",
       "Lean Manufacturing Practitioner"
     ],
-    "phone": "+91 8186891961",
+    "phone": "+91 81868 91961",
     "email": "lalithtinku@gmail.com",
     "linkedin": "linkedin.com/in/lalithchary",
-    "location": "Hyderabad, India",
-    "about": "With over 8 years in manufacturing, I have worked extensively on production planning, material flow, inventory control, and process optimization.\nMy work involves understanding how different teams and departments operate together and improving those systems by removing non-value-added activities and improving flow. I use Japanese work principles like TPS and Kaizen, along with Six Sigma methods, to drive continuous improvement. I also have experience with ERP systems, Power BI, and Power Apps for process automation and reporting.\n\nAlong with my manufacturing experience, I also bring a strong background in IT systems and business process automation. I have worked on enterprise IT infrastructure, information security, and workflow automation, with hands-on experience in ISMS 27001, Active Directory, and Microsoft Power Platform. I focus on building secure, scalable solutions that simplify processes, improve data handling, and support better coordination across teams.",
+    "location": "Pragathi Nagar, Hyderabad - 500090, India",
+    "about": "Results-driven Manufacturing Systems Engineer with 8+ years of experience in production planning and control (PPC), material planning, lean manufacturing, inventory management, process optimization, and manufacturing business processes. Proven track record in implementing Toyota Production System (TPS), Six Sigma, Kaizen, and digital automation to improve productivity, reduce waste, and streamline operations. Expertise in ERP systems, MRP, BOM management, capacity planning, shop floor control, Power BI dashboards, and cross-functional coordination across supply chain operations.",
     "stats": [
       {
         "value": "8+",
         "label": "Years Experience"
       },
       {
-        "value": "80%",
-        "label": "Manual Work Reduced"
+        "value": "6%",
+        "label": "Scrap Reduction"
       },
       {
-        "value": "27001",
-        "label": "ISMS Certified"
+        "value": "25%",
+        "label": "Data Entry Efficiency"
       },
       {
-        "value": "10K+",
-        "label": "Products Managed"
+        "value": "95%+",
+        "label": "Material Availability"
       }
     ]
   },
   "experience": [
     {
       "company": "Diligent SCM Solutions Pvt Ltd",
-      "role": "IT Systems Analyst & Infrastructure Specialist",
-      "period": "2020 – 2025",
-      "type": "IT",
-      "highlights": [
-        "Led ISMS 27001 certification — security policies, risk assessments, and successful external audit",
-        "Architected Microsoft Power Platform automation reducing manual processing by 80%",
-        "Deployed Active Directory infrastructure for 80+ users with GPOs and RBAC",
-        "Designed disaster recovery strategy achieving 99.9% data availability",
-        "Built Power BI analytics platform with real-time dashboards for inventory & cost optimization"
-      ]
-    },
-    {
-      "company": "Diligent SCM Solutions Pvt Ltd",
       "role": "Manufacturing Systems Engineer",
       "period": "2020 – 2025",
       "type": "Manufacturing",
       "highlights": [
-        "Analyzed manufacturing systems using Value Stream Maps and process flowcharts",
-        "Implemented Lean tools: 5S, Six Sigma, Poka-Yoke, Kaizen, Ohno Circle",
-        "Eliminated non-value-added activities improving operational efficiency",
-        "Coordinated Kaizen activities across departments",
-        "Developed mistake-proof systems using IT tools and digital automation"
+        "Collaborated with cross-functional teams to analyse manufacturing systems and develop process flowcharts and Value Stream Maps (VSM) for continuous improvement.",
+        "Led Lean Manufacturing and Toyota Production System (TPS) implementation initiatives including 5S, Six Sigma, Poka-Yoke, Kaizen, and Ohno Circle techniques.",
+        "Identified and eliminated non-value-added activities through waste reduction strategies, improving operational efficiency and overall equipment effectiveness (OEE).",
+        "Coordinated Kaizen events and cross-departmental improvement activities to enhance communication, reduce lead times, and optimize workflow efficiency.",
+        "Analyzed production bottlenecks using root cause analysis and implemented corrective actions to improve throughput and meet production targets.",
+        "Developed digital tools using Power BI and Power Apps to improve process visibility, reduce manual effort, and create mistake-proof (Poka-Yoke) manufacturing systems.",
+        "Standardized workflows and SOPs for manufacturing operations to ensure consistency and compliance with quality standards.",
+        "Improved the document management system for import and export obligations by getting the inputs from DGFT, AEO, Customs, CHA and Internal Departments."
       ]
     },
     {
@@ -65,10 +55,13 @@ export const resumeData = {
       "period": "2019 – 2020",
       "type": "Manufacturing",
       "highlights": [
-        "Managed material planning for 10,000+ products across 8 product families",
-        "Optimized procurement planning and supplier quote comparisons",
-        "Performed inventory cost reconciliation for P&L analysis",
-        "Conducted product cost estimation for sheet metal components"
+        "Managed end-to-end material planning for 10,000+ products across 8 product families, ensuring timely availability of raw materials and components for production schedules.",
+        "Prepared supplier quote comparison statements and optimized procurement planning to reduce material costs and improve supplier lead time performance.",
+        "Created dispatch schedules and coordinated material flow to minimize excess inventory and reduce carrying costs while maintaining production continuity.",
+        "Generated weekly material consumption reports, purchase price variation (PPV) analysis, and product-family-wise inventory status for management decision-making.",
+        "Performed inventory cost reconciliation and supported P&L analysis to identify cost-saving opportunities across manufacturing operations.",
+        "Conducted product cost estimation for sheet metal components for new RFQs, supporting business development and pricing decisions.",
+        "Implemented scrap and waste reduction initiatives, improving manufacturing cost efficiency and material utilization rates."
       ]
     },
     {
@@ -77,10 +70,12 @@ export const resumeData = {
       "period": "2017 – 2019",
       "type": "Manufacturing",
       "highlights": [
-        "From Order Receiving to Execution monitoring.Reduced sheet metal scrap by 6% through optimized nesting strategies",
-        "Improved data entry efficiency by 25% via job card redesign with visual controls",
-        "Implemented FIFO systems reducing material waste by 5%",
-        "Managed ~5000 variants and 15,000 PO lines per year"
+        "Planned daily material requirements and created production schedules aligned with customer delivery timelines and capacity constraints.",
+        "Improved sheet metal nesting and cutting strategies, reducing scrap rates by 6% and saving material costs.",
+        "Redesigned job card formats with visual controls and standardized work instructions, improving data entry efficiency by 25%.",
+        "Implemented FIFO (First In First Out) systems on the shop floor to improve line balancing, reduce WIP, and decrease material waste by 5%.",
+        "Managed production scheduling, capacity planning and coordinated production execution across manufacturing cells, monitoring workflow efficiency, machine utilization, and on-time delivery performance to meet the customer need by date.",
+        "Worked with team to identify the bottlenecks, line imbalances, repeated breakdowns and improve upon them."
       ]
     }
   ],
@@ -310,14 +305,14 @@ export const resumeData = {
   ],
   "education": [
     {
-      "degree": "M.Tech in Machine Design",
-      "institution": "Anubose Institute of Technology & Sciences, Palvoncha",
+      "degree": "M.Tech in Mechanical Engineering",
+      "institution": "Anubose Institute of Technology & Sciences",
       "period": "2014 – 2016",
       "score": "73%"
     },
     {
       "degree": "B.Tech in Mechanical Engineering",
-      "institution": "Sri Kavitha Engineering College, Karepalli",
+      "institution": "Sri Kavitha Engineering College",
       "period": "2010 – 2014",
       "score": "68%"
     }

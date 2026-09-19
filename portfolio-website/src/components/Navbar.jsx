@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton, Drawer, List, ListItem, ListItemText, Box, useTheme, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import DownloadIcon from '@mui/icons-material/Download';
 import { motion } from 'framer-motion';
 
 const navItems = [
@@ -44,7 +45,7 @@ const Navbar = () => {
                             <MenuIcon />
                         </IconButton>
                     ) : (
-                        <Box sx={{ display: 'flex', gap: 1 }}>
+                        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
                             {navItems.map((item, i) => (
                                 <motion.div key={item.id} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
                                     <Button onClick={() => handleScroll(item.id)} sx={{ color: 'text.secondary', fontWeight: 500, '&:hover': { color: 'primary.main', background: 'rgba(108,99,255,0.08)' } }}>
@@ -52,6 +53,30 @@ const Navbar = () => {
                                     </Button>
                                 </motion.div>
                             ))}
+                            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: navItems.length * 0.1 }}>
+                                <Button
+                                    component="a"
+                                    href="/resume.txt"
+                                    download="Lakshmi_Narayanachary_Modepalli_Resume.txt"
+                                    variant="outlined"
+                                    size="small"
+                                    startIcon={<DownloadIcon />}
+                                    sx={{
+                                        ml: 1,
+                                        borderColor: '#6C63FF',
+                                        color: '#00D9FF',
+                                        fontWeight: 600,
+                                        borderRadius: '20px',
+                                        px: 2,
+                                        '&:hover': {
+                                            borderColor: '#00D9FF',
+                                            background: 'rgba(108,99,255,0.15)'
+                                        }
+                                    }}
+                                >
+                                    Download Resume
+                                </Button>
+                            </motion.div>
                         </Box>
                     )}
                 </Toolbar>
@@ -69,6 +94,16 @@ const Navbar = () => {
                             <ListItemText primary={item.label} primaryTypographyProps={{ variant: 'h6', fontWeight: 500 }} />
                         </ListItem>
                     ))}
+                    <ListItem
+                        button
+                        component="a"
+                        href="/resume.txt"
+                        download="Lakshmi_Narayanachary_Modepalli_Resume.txt"
+                        sx={{ py: 2, '&:hover': { background: 'rgba(108,99,255,0.08)' } }}
+                    >
+                        <DownloadIcon sx={{ color: '#00D9FF', mr: 1.5 }} />
+                        <ListItemText primary="Download Resume" primaryTypographyProps={{ variant: 'h6', fontWeight: 600, color: '#00D9FF' }} />
+                    </ListItem>
                 </List>
             </Drawer>
         </>
