@@ -56,8 +56,8 @@ const Navbar = () => {
                             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: navItems.length * 0.1 }}>
                                 <Button
                                     component="a"
-                                    href="/resume.txt"
-                                    download="Lakshmi_Narayanachary_Modepalli_Resume.txt"
+                                    href="/resume.pdf"
+                                    download="Lakshmi_Narayanachary_Modepalli_Resume.pdf"
                                     variant="outlined"
                                     size="small"
                                     startIcon={<DownloadIcon />}
@@ -97,8 +97,8 @@ const Navbar = () => {
                     <ListItem
                         button
                         component="a"
-                        href="/resume.txt"
-                        download="Lakshmi_Narayanachary_Modepalli_Resume.txt"
+                        href="/resume.pdf"
+                        download="Lakshmi_Narayanachary_Modepalli_Resume.pdf"
                         sx={{ py: 2, '&:hover': { background: 'rgba(108,99,255,0.08)' } }}
                     >
                         <DownloadIcon sx={{ color: '#00D9FF', mr: 1.5 }} />
